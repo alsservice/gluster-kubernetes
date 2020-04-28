@@ -76,7 +76,7 @@ items:
             claimName: gluster-s3-meta-claim
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
-        dnsPolicy: ClusterFirst
+        dnsPolicy: ClusterFirstWithHostNet
         serviceAccountName: default
         serviceAccount: default
         securityContext: {}

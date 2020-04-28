@@ -146,7 +146,7 @@ objects:
             path: "/lib/modules"
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
-        dnsPolicy: ClusterFirst
+        dnsPolicy: ClusterFirstWithHostNet
         securityContext: {}
 parameters:
 - name: NODE_LABEL

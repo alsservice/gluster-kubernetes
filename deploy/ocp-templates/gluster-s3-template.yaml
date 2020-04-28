@@ -98,7 +98,7 @@ objects:
             claimName: ${META_PVC}
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
-        dnsPolicy: ClusterFirst
+        dnsPolicy: ClusterFirstWithHostNet
         serviceAccountName: default
         serviceAccount: default
         securityContext: {}
