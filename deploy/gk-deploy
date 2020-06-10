@@ -850,6 +850,10 @@ if [[ ${EXISTS_DEPLOY_HEKETI} -eq 1 ]] && [[ ${EXISTS_HEKETI} -eq 0 ]]; then
     output "heketi topology loaded."
   fi
 
+  output "Sleep 30s..."
+  sleep 30
+  output "Wake up"
+
   if [[ $("${heketi_cli}" volume list 2>&1) != *heketidbstorage* ]]; then
     durability=''
     if [ ${SINGLE_NODE} -eq 1 ] ; then
