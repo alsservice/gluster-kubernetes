@@ -861,7 +861,7 @@ if [[ ${EXISTS_DEPLOY_HEKETI} -eq 1 ]] && [[ ${EXISTS_HEKETI} -eq 0 ]]; then
         exit 1
       fi
     fi
-    eval_output "${heketi_cli} setup-openshift-heketi-storage --listfile=/tmp/heketi-storage.json ${durability} 2>&1"
+    eval_output "${heketi_cli} setup-openshift-heketi-storage --listfile=/tmp/heketi-storage.json ${durability} --durability none 2>&1"
     if [[ ${?} != 0 ]]; then
       output "Failed on setup openshift heketi storage"
       output "This may indicate that the storage must be wiped and the GlusterFS nodes must be reset."
@@ -921,7 +921,7 @@ while [[ "x${heketi_service}" == "x" ]] || [[ "${heketi_service}" == "<none>" ]]
   heketi_service=$(${CLI} describe svc/heketi | grep "Endpoints:" | awk '{print $2}')
 done
 
-heketi_pod=$(${CLI} get pod --no-headers --show-all --selector="heketi" | awk '{print $1}')
+heketi_pod=$(${CLI} get pod --no-headers --selector="heketi" | awk '{print $1}')
 
 if [[ "${CLI}" == *oc\ * ]]; then
   heketi_service=$(${CLI} describe routes/heketi | grep "Requested Host:" | awk '{print $3}')
